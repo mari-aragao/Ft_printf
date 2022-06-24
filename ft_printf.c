@@ -6,7 +6,7 @@
 /*   By: maragao <maragao@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:35:09 by maragao           #+#    #+#             */
-/*   Updated: 2022/06/23 18:01:05 by maragao          ###   ########.rio      */
+/*   Updated: 2022/06/24 15:27:25 by maragao          ###   ########.rio      */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf_options(char c, va_list args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (c == 'c')
@@ -33,12 +33,12 @@ int	ft_printf_options(char c, va_list args)
 	if (c == 'x')
 		i = ft_hexa(va_arg(args, unsigned int), "0123456789abcdef");
 	if (c == 'X')
-		i = ft_hexa(va_arg(args, unsigned int), "0123456789ABCDEF"); 
+		i = ft_hexa(va_arg(args, unsigned int), "0123456789ABCDEF");
 	if (c == '%')
 		i = ft_putchar_fd('%', 1);
 	return (i);
 }
-				
+
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
@@ -48,9 +48,9 @@ int	ft_printf(const char *s, ...)
 	va_start(args, s);
 	i = 0;
 	len = 0;
-	while(s[i])
+	while (s[i])
 	{
-		if(s[i] == '%' && ft_strchr("cspdiuxX%", s[i + 1]))
+		if (s[i] == '%' && ft_strchr("cspdiuxX%", s[i + 1]))
 		{
 			len += ft_printf_options(s[i + 1], args);
 			i++;
@@ -65,19 +65,3 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (len);
 }
-
-/*#include <stdio.h>
-int main()
-{
-	int i = 30;
-	unsigned int a = 50;
-	char c = 0;
-	char *str = "ola";
-	void *ptr = &c;
-	int res;
-
-	printf("c: %c\n", c);
-	res = ft_printf(" %c \n %s \n %p \n %d \n %i \n %u \n %x \n %X \n %% \n", c, str, ptr, i, i, a, i, i);
-	printf ("res%x: ", str);
-	return 0;
-}*/

@@ -1,4 +1,4 @@
-SRCS = ft_printf.c ft_putchar_fd.c ft_putnbr_u.c ft_hexa.c ft_putstr_fd.c ft_putnbr_fd.c ft_strchr.c ft_hexa_long.c
+SRCS = ft_printf.c printf_functions1.c printf_functions2.c printf_functions3.c 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -21,7 +21,7 @@ all: ${NAME}
 clean:
 	${RM} ${OBJS}
 
-fclen:	clean
+fclean:	clean
 	${RM} ${NAME}
 
 re:	fclean all
